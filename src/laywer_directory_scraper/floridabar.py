@@ -54,7 +54,6 @@ class FloridaBar:
         query_params = {}
 
         if bar_number is not None:
-
             if "*" in bar_number:
                 raise FloridaBarSearchError('Wildcards ("*") are not allowed.')
 
@@ -136,7 +135,6 @@ class FloridaBar:
         headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
 
         try:
-            
             request = self.session.get(
                 self.search_url,
                 params=query_params,
@@ -152,7 +150,7 @@ class FloridaBar:
         too_many_results_message = (
             "Too many results. Please enter additional search parameters and try again."
         )
-        
+
         if too_many_results_message in str(request.content):
             raise FloridaBarSearchError(too_many_results_message)
 
